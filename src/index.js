@@ -38,7 +38,7 @@ async function handleRequest(request) {
 
   // return docs
   if (url.pathname === "/") {
-    return new Response(DOCS, {
+    return new Response(HELP, {
       status: 200,
       headers: {
         "content-type": "text/html"
