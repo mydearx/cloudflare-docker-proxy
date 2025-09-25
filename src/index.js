@@ -32,6 +32,18 @@ function routeByHosts(host) {
 
 async function handleRequest(request) {
   const url = new URL(request.url);
+
+  // 调试看看 CUSTOM_DOMAIN 是否生效
+  if (url.pathname === "/debug") {
+    return new Response(
+        JSON.stringify({
+          CUSTOM_DOMAIN: CUSTOM_DOMAIN,
+          MODE: MODE,
+        }),
+        { status: 200 }
+    );
+  }
+
   if (url.pathname == "/") {
     return Response.redirect(url.protocol + "//" + url.host + "/v2/", 301);
   }
